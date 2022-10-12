@@ -1,43 +1,44 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
+const dataFormat = require("../utils/dataFormat");
+const reactionSchema = require('./Reaction');
 
-// Schema to create Post model
-const postSchema = new Schema(
+// Schema to create User model
+const ThoughtSchema = new Schema(
   {
-    published: {
-      type: Boolean,
-      default: false,
+    thoughtText: {
+      type: String,
+      required: true,
+      validate: [({ length }) => length > 0 && length <= 280, 'Thoughts can only be between 1 and 280 characters long!']
     },
-    createdAt: {
+
+    createAt: {
       type: Date,
       default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
     },
-    meta: {
-      upvotes: Number,
-      bookmarks: Number,
-    },
-    text: {
-      type: String,
-      minLength: 15,
-      maxLength: 500,
-    },
+
+    username: {
+        type: String,
+        require: true
+      },
+      reactions: [reactionSchema],
   },
   {
+    // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
+    // Here we are indicating that we want virtuals to be included with our response, overriding the default behavior
     toJSON: {
-      virtuals: true,
+      getters: true,
+      virtuals: true
     },
-    id: false,
   }
 );
+  
+// Create a virtual property `reactionCount` that gets and sets the user's full name
+ThoughtSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length;
+});
 
-// Create a virtual property `upvoteCount` that gets the amount of comments per user
-postSchema
-  .virtual('upvoteCount')
-  // Getter
-  .get(function () {
-    return this.meta.upvotes;
-  });
 
-// Initialize our Post model
-const Post = model('post', postSchema);
+const Thought = model('Thought', ThoughtSchema);
 
-module.exports = Post;
+module.exports = Thought;
