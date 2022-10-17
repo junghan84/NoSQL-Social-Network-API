@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
-const dataFormat = require("../utils/dataFormat");
+const dataFormat = require('../utils/dataFormat');
 const reactionSchema = require('./Reaction');
 
 // Schema to create User model
