@@ -59,7 +59,9 @@ screenshot for generate HTML webpages
 ![Employee Tracker](at https://junghan84.github.io/SQL-Employee-Tracker/) 
 
 ## Video
-<img src="Assets/employee-tracker.webm"/>
+<img src="Assets/Users.webm"/>
+<img src="Assets/thoughts.webm"/>
+<img src="Assets/reaction.webm"/>
 
 
 ## Authors
