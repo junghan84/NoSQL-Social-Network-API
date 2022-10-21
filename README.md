@@ -52,11 +52,11 @@ screenshot for generate HTML webpages
 
 ## Deployed-link
 
-![Employee Tracker](at https://github.com/junghan84/SQL-Employee-Tracker) 
+![Employee Tracker](at https://github.com/junghan84/NoSQL-Social-Network-API) 
 
 ## Repo-link 
 
-![Employee Tracker](at https://junghan84.github.io/SQL-Employee-Tracker/) 
+![Employee Tracker](at https://junghan84.github.io/NoSQL-Social-Network-API/)
 
 ## Video
 <img src="Assets/Users.webm"/>
